@@ -1,4 +1,4 @@
-package main;
+package ShopifyBackendChallenge;
 
 import java.awt.Image;
 

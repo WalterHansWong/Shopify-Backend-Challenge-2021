@@ -1,7 +1,6 @@
-package main;
+package ShopifyBackendChallenge;
 
 import java.util.*;
-import main.ImageInfo;
 
 public class ImageRepository {
     public static final int DSIZE = 32;

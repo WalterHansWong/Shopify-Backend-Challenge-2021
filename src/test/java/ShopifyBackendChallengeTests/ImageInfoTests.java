@@ -1,6 +1,6 @@
-package test;
+package ShopifyBackendChallengeTests;
 
-import main.ImageInfo;
+import ShopifyBackendChallenge.ImageInfo;
 import org.junit.Test;
 
 import javax.imageio.ImageIO;
@@ -16,6 +16,6 @@ public class ImageInfoTests {
             img = ImageIO.read(new File("./src/Images/badminton.jpg"));
         } catch (IOException e) {
         }
-        ImageInfo image1 = new ImageInfo(img, "test");
+        ImageInfo image1 = new ImageInfo(img, "ShopifyBackendChallengeTests");
     }
 }
