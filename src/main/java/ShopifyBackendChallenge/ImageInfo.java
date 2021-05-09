@@ -46,6 +46,24 @@ public class ImageInfo {
     }
 
     /**
+     * Updates the price of this image object
+     * @param newPrice the new price of this image
+     */
+    public void updatePrice(float newPrice) {
+        this.price = newPrice;
+    }
+
+    /**
+     * Updates the rating of this image object
+     * I've chosen to directly update the rating, there would be another
+     * method (uncreated) that calculates the new rating with each new review
+     * @param newRating the new rating of the image
+     */
+    public void updateRating(float newRating) {
+        this.rating = newRating;
+    }
+
+    /**
      * Methods to get the class variables
      */
     public float getPrice() {
