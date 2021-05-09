@@ -45,5 +45,30 @@ public class ImageInfo {
         this.title = title;
     }
 
-    // TODO: add functions to get each of the information
+    /**
+     * Methods to get the class variables
+     */
+    public float getPrice() {
+        return price;
+    }
+
+    public float getRating() {
+        return rating;
+    }
+
+    public Image getImg() {
+        return img;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public String getTitle() {
+        return title;
+    }
 }
