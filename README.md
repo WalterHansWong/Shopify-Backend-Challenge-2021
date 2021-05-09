@@ -5,5 +5,6 @@ Challenge Link: https://docs.google.com/document/d/1ZKRywXQLZWOqVOHC4JkF3LqdpO3L
 ## TODO:
 Instructions
 Test Case Coverage
-Narrative - ie assumptions made 
+Narrative - ie assumptions made
+Challenges/What I learned
 Future Improvements
