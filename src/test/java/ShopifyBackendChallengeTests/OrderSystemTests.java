@@ -105,11 +105,11 @@ public class OrderSystemTests {
         ImageInfo image1 = new ImageInfo(img, (float) 5.75);
         OrderSystem order1 = new OrderSystem("Walter", 20);
         order1.addItem(image1, 2);
-        assertEquals(12.075, order1.checkout(), 0.01);
+        assertEquals(12.075, order1.checkout((float) 0.05), 0.01);
     }
 
     @Test
-    public void DiscountCheckoutTest() {
+    public void DiscountCheckoutTest() throws Exception {
         BufferedImage img = null;
         try {
             img = ImageIO.read(new File("./src/Images/badminton.jpg"));
@@ -119,6 +119,6 @@ public class OrderSystemTests {
         ImageInfo image1 = new ImageInfo(img, (float) 5.75);
         OrderSystem order1 = new OrderSystem("Walter", 20);
         order1.addItem(image1, 2);
-        assertEquals(11.47125, order1.checkout((float) 0.05), 0.01);
+        assertEquals(11.47125, order1.checkout((float) 0.05, (float) 0.05), 0.01);
     }
 }

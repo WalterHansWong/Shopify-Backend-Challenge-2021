@@ -30,7 +30,21 @@ public class OrderSystem {
      * @return boolean indicating the success(true)/failure(false) of this operation
      */
     public boolean addItem(ImageInfo img, long quantity) {
-        return false; //dummy value for now
+        float newCost = orderCost + (img.getPrice() * quantity);
+        if (newCost > money) {
+            return false;
+        }
+        else {
+            orderCost = newCost;
+        }
+
+        if (shoppingCart.containsKey(img)) {
+            shoppingCart.put(img, shoppingCart.get(img) + quantity);
+        }
+        else {
+            shoppingCart.put(img, quantity);
+        }
+        return true;
     }
 
     /**
@@ -39,7 +53,14 @@ public class OrderSystem {
      * @return boolean indicating the success(true)/failure(false) of this operation
      */
     public boolean removeItem(ImageInfo img) {
-        return false;
+        if (!shoppingCart.containsKey(img)) {
+            return false;
+        }
+        else {
+            orderCost -= img.getPrice() * shoppingCart.get(img);
+            shoppingCart.remove(img);
+            return true;
+        }
     }
 
     /**
@@ -49,16 +70,28 @@ public class OrderSystem {
      * @return boolean indicating the success(true)/failure(false) of this operation
      */
     public boolean removeItem(ImageInfo img, long quantity) {
-        return false;
+        if (!shoppingCart.containsKey(img)) {
+            return false;
+        }
+        else {
+            if (shoppingCart.get(img) < quantity) {
+                System.out.println("You are trying to remove more items than you have in the cart.");
+                return false;
+            }
+            else {
+                orderCost -= img.getPrice() * quantity;
+                shoppingCart.put(img, shoppingCart.get(img) - quantity);
+                return true;
+            }
+        }
     }
 
     /**
      * Calculates the total order price after tax, when there is no discount
      * @return the total order price
      */
-    public float checkout() {
-        // TODO: calculate total order price, including tax
-        return 0;
+    public float checkout(float taxRate) {
+        return calculateTax(orderCost, taxRate);
     }
 
     /**
@@ -67,9 +100,9 @@ public class OrderSystem {
      *                 ie 0.05 means 5% off
      * @return the total order price
      */
-    public float checkout(float discount) {
-        // TODO: calculate total order price, including discount and tax
-        return 0;
+    public float checkout(float discount, float taxRate) throws Exception {
+        float discountedPrice = calculateDiscount(discount);
+        return calculateTax(discountedPrice, taxRate);
     }
 
     /**
@@ -78,17 +111,23 @@ public class OrderSystem {
      *                 ie 0.05 means 5% off
      * @return the order amount after a discount
      */
-    private boolean calculateDiscount(float discount) {
-        return false;
+    private float calculateDiscount(float discount) throws Exception {
+        if (discount >= 0 && discount <= 1) {
+            return (1 - discount) * orderCost;
+        }
+        else {
+            throw new Exception("Discount must be between 0 and 1!");
+        }
     }
 
     // Possible improvement: support different areas and their taxation
-
     /**
      * Helper method that calculates the tax for the entire order
+     * @param currTotal the current order total
+     * @param taxRate the tax rate expressed as a decimal ie 5% tax is represented by 0.05
      * @return the total order amount, after tax
      */
-    private float calculateTax() {
-        return 0;
+    private float calculateTax(float currTotal, float taxRate) {
+        return (1 + taxRate) * currTotal;
     }
 }
