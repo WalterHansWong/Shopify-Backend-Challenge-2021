@@ -42,7 +42,22 @@ public class ImageInfoTests {
             e.printStackTrace();
         }
         ImageInfo image1 = new ImageInfo(img, (float) 5.75);
-        assertEquals( 5.75, image1.getPrice(),0.01);
+        assertEquals(img, image1.getImg());
+    }
+
+    @Test
+    public void GetImgTest2() {
+        BufferedImage img = null;
+        BufferedImage img2 = null;
+        try {
+            img2 = ImageIO.read(new File("./src/Images/swimming.jpg"));
+            img = ImageIO.read(new File("./src/Images/badminton.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ImageInfo image2 = new ImageInfo(img2, (float) 3.80);
+        assertNotEquals(img, image2.getImg());
+        assertEquals(img2, image2.getImg());
     }
 
     @Test
