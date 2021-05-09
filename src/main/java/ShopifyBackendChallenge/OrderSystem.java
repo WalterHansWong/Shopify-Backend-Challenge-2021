@@ -29,14 +29,14 @@ public class OrderSystem {
         return false;
     }
 
-    public boolean checkout() {
+    public float checkout() {
         // TODO: calculate total order price, including tax
-        return false;
+        return 0;
     }
 
-    public boolean checkout(float discount) {
+    public float checkout(float discount) {
         // TODO: calculate total order price, including discount and tax
-        return false;
+        return 0;
     }
 
     private boolean calculateDiscount(float discount) {
