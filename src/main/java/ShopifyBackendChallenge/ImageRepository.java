@@ -21,5 +21,6 @@ public class ImageRepository {
      */
     public ImageRepository() { this(DSIZE); }
 
-    // TODO: add functions to add/remove images, buy images, check if the image is in-stock, add stock(quantity), calculate discount
+    // TODO: add functions to add/remove images, buy images, check if the image is in-stock, add stock(quantity),
+    //  calculate discount, find most recent addition
 }
