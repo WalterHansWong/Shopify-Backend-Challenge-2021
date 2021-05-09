@@ -1,3 +1,5 @@
+package main;
+
 import java.awt.Image;
 
 public class ImageInfo {

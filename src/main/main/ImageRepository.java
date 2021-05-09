@@ -1,10 +1,13 @@
+package main;
+
 import java.util.*;
+import main.ImageInfo;
 
 public class ImageRepository {
     public static final int DSIZE = 32;
 
     private final int capacity;
-    private HashMap<Image, Long> stock;
+    private HashMap<ImageInfo, Long> stock;
 
     /**
      * Constructor method to create image repository of a certain size.
