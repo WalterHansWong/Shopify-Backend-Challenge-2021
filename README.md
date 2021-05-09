@@ -3,5 +3,7 @@
 Challenge Link: https://docs.google.com/document/d/1ZKRywXQLZWOqVOHC4JkF3LqdpO3Llpfk_CkZPR8bjak/edit#heading=h.n7bww7g70ipk
 
 ## TODO:
-Instructions:
-Narrative: ie assumptions made 
+Instructions
+Test Case Coverage
+Narrative - ie assumptions made 
+Future Improvements
