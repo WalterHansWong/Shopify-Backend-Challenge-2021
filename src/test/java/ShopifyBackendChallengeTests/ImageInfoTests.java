@@ -30,7 +30,7 @@ public class ImageInfoTests {
             e.printStackTrace();
         }
         ImageInfo image1 = new ImageInfo(img, (float) 5.75);
-        assertEquals(image1.getPrice(), 5.75, 0.01);
+        assertEquals(5.75, image1.getPrice(),0.01);
     }
 
     @Test
@@ -42,7 +42,7 @@ public class ImageInfoTests {
             e.printStackTrace();
         }
         ImageInfo image1 = new ImageInfo(img, (float) 5.75);
-        assertEquals(image1.getPrice(), 5.75, 0.01);
+        assertEquals( 5.75, image1.getPrice(),0.01);
     }
 
     @Test
@@ -71,7 +71,7 @@ public class ImageInfoTests {
         float rating = 4;
         String category = "Sports";
         ImageInfo image1 = new ImageInfo(img, title, desc, price, rating, category);
-        assertEquals(image1.getRating(), 4, 0.00001);
+        assertEquals(4, image1.getRating(),0.00001);
     }
 
     @Test
@@ -106,5 +106,38 @@ public class ImageInfoTests {
         String category = "Sports";
         ImageInfo image1 = new ImageInfo(img, title, desc, price, rating, category);
         assertEquals(image1.getDescription(), "A shot of the head of a Yonex Z-Speed Badminton Racquet");
+    }
+
+    @Test
+    public void UpdatePriceTest() {
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File("./src/Images/badminton.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ImageInfo image1 = new ImageInfo(img, (float) 5.75);
+        assertEquals(5.75, image1.getPrice(), 0.01);
+        image1.updatePrice(6);
+        assertEquals(6.0, image1.getPrice(),0.01);
+    }
+
+    @Test
+    public void UpdateRatingTest() {
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File("./src/Images/badminton.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        String title = "Badminton Racquet";
+        String desc = "A shot of the head of a Yonex Z-Speed Badminton Racquet";
+        float price = (float) 5.75;
+        float rating = 4;
+        String category = "Sports";
+        ImageInfo image1 = new ImageInfo(img, title, desc, price, rating, category);
+        assertEquals(4, image1.getRating(),0.00001);
+        image1.updateRating((float) 3.8);
+        assertEquals(3.8, image1.getRating(),0.00001);
     }
 }
