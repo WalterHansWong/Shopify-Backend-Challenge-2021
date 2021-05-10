@@ -96,6 +96,18 @@ public class OrderSystem {
     }
 
     /**
+     * Gets the number of this item currently in the shopping cart
+     * @param img the item to look for
+     * @return the number of this item in the cart
+     */
+    public long getNumItem(ImageInfo img) {
+        if (shoppingCart.containsKey(img)) {
+            return shoppingCart.get(img);
+        }
+        return 0;
+    }
+
+    /**
      * Calculates the total order price after tax, when there is no discount
      * @return the total order price
      */
