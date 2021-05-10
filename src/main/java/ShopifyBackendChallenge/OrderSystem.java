@@ -9,6 +9,7 @@ public class OrderSystem {
     private String user;
     private float money;
     private float orderCost = 0;
+    private ImageRepository store;
 
     // an expansion to the system would be to create an User object that tracks things like
     // the amount of money this user has, previous purchases, login details, etc.
@@ -18,9 +19,10 @@ public class OrderSystem {
      * @param user the name/username of the user
      * @param money the amount of money this user has
      */
-    public OrderSystem(String user, float money) {
+    public OrderSystem(String user, float money, ImageRepository store) {
         this.user = user;
         this.money = money;
+        this.store = store;
     }
 
     /**
@@ -35,7 +37,12 @@ public class OrderSystem {
             return false;
         }
         else {
-            orderCost = newCost;
+            if (store.buyImage(img, quantity)) {
+                orderCost = newCost;
+            }
+            else {
+                return false;
+            }
         }
 
         if (shoppingCart.containsKey(img)) {
@@ -58,6 +65,7 @@ public class OrderSystem {
         }
         else {
             orderCost -= img.getPrice() * shoppingCart.get(img);
+            store.addStock(img, shoppingCart.get(img));
             shoppingCart.remove(img);
             return true;
         }
@@ -80,6 +88,7 @@ public class OrderSystem {
             }
             else {
                 orderCost -= img.getPrice() * quantity;
+                store.addStock(img, quantity);
                 shoppingCart.put(img, shoppingCart.get(img) - quantity);
                 return true;
             }

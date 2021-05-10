@@ -6,6 +6,7 @@ import ShopifyBackendChallenge.OrderSystem;
 import org.junit.Test;
 
 import javax.imageio.ImageIO;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +23,8 @@ public class OrderSystemTests {
             e.printStackTrace();
         }
         ImageInfo image1 = new ImageInfo(img, (float) 5.75);
-        OrderSystem order1 = new OrderSystem("Walter", 20);
+        ImageRepository store = new ImageRepository();
+        OrderSystem order1 = new OrderSystem("Walter", 20, store);
         assertTrue(order1.addItem(image1, 2));
     }
 
@@ -35,7 +37,8 @@ public class OrderSystemTests {
             e.printStackTrace();
         }
         ImageInfo image1 = new ImageInfo(img, (float) 5.75);
-        OrderSystem order1 = new OrderSystem("Walter", 5);
+        ImageRepository store = new ImageRepository();
+        OrderSystem order1 = new OrderSystem("Walter", 5, store);
         assertFalse(order1.addItem(image1, 2));
     }
 
@@ -48,7 +51,8 @@ public class OrderSystemTests {
             e.printStackTrace();
         }
         ImageInfo image1 = new ImageInfo(img, (float) 5.75);
-        OrderSystem order1 = new OrderSystem("Walter", 20);
+        ImageRepository store = new ImageRepository();
+        OrderSystem order1 = new OrderSystem("Walter", 20, store);
         order1.addItem(image1, 2);
         assertTrue(order1.removeItem(image1, 1));
     }
@@ -62,7 +66,8 @@ public class OrderSystemTests {
             e.printStackTrace();
         }
         ImageInfo image1 = new ImageInfo(img, (float) 5.75);
-        OrderSystem order1 = new OrderSystem("Walter", 20);
+        ImageRepository store = new ImageRepository();
+        OrderSystem order1 = new OrderSystem("Walter", 20, store);
         order1.addItem(image1, 2);
         assertFalse(order1.removeItem(image1, 3));
     }
@@ -76,7 +81,8 @@ public class OrderSystemTests {
             e.printStackTrace();
         }
         ImageInfo image1 = new ImageInfo(img, (float) 5.75);
-        OrderSystem order1 = new OrderSystem("Walter", 20);
+        ImageRepository store = new ImageRepository();
+        OrderSystem order1 = new OrderSystem("Walter", 20, store);
         order1.addItem(image1, 2);
         assertTrue(order1.removeItem(image1));
     }
@@ -90,7 +96,8 @@ public class OrderSystemTests {
             e.printStackTrace();
         }
         ImageInfo image1 = new ImageInfo(img, (float) 5.75);
-        OrderSystem order1 = new OrderSystem("Walter", 20);
+        ImageRepository store = new ImageRepository();
+        OrderSystem order1 = new OrderSystem("Walter", 20, store);
         assertFalse(order1.removeItem(image1));
     }
 
@@ -103,7 +110,8 @@ public class OrderSystemTests {
             e.printStackTrace();
         }
         ImageInfo image1 = new ImageInfo(img, (float) 5.75);
-        OrderSystem order1 = new OrderSystem("Walter", 20);
+        ImageRepository store = new ImageRepository();
+        OrderSystem order1 = new OrderSystem("Walter", 20, store);
         order1.addItem(image1, 2);
         assertEquals(12.075, order1.checkout((float) 0.05), 0.01);
     }
@@ -117,7 +125,8 @@ public class OrderSystemTests {
             e.printStackTrace();
         }
         ImageInfo image1 = new ImageInfo(img, (float) 5.75);
-        OrderSystem order1 = new OrderSystem("Walter", 20);
+        ImageRepository store = new ImageRepository();
+        OrderSystem order1 = new OrderSystem("Walter", 20, store);
         order1.addItem(image1, 2);
         assertEquals(11.47125, order1.checkout((float) 0.05, (float) 0.05), 0.01);
     }
