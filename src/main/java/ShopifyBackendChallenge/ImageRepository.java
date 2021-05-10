@@ -11,7 +11,6 @@ public class ImageRepository {
     public ImageRepository() {}
 
     // TODO: add multithreading capability?
-    //  order system class to calculate discount
 
     /**
      * Adds an image item to the store/image repository
@@ -109,9 +108,15 @@ public class ImageRepository {
         return true;
     }
 
+    /**
+     * Gets the number of a specific item currently in the store
+     * @param img the specific item in question
+     * @return the quantity of stock
+     */
     public long getQuantity(ImageInfo img) {
         if (!stock.containsKey(img)) {
-            return -1; //consider if this is a magic number?
+            return -1; // not a magic number as 0 represents that the store has this item, but is currently out of stock
+                       // whereas -1 represents that the store does not have this item
         }
 
         return stock.get(img);
