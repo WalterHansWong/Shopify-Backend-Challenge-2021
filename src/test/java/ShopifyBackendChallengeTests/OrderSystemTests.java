@@ -24,6 +24,7 @@ public class OrderSystemTests {
         }
         ImageInfo image1 = new ImageInfo(img, (float) 5.75);
         ImageRepository store = new ImageRepository();
+        store.addImage(image1, 5);
         OrderSystem order1 = new OrderSystem("Walter", 20, store);
         assertTrue(order1.addItem(image1, 2));
     }
@@ -52,6 +53,7 @@ public class OrderSystemTests {
         }
         ImageInfo image1 = new ImageInfo(img, (float) 5.75);
         ImageRepository store = new ImageRepository();
+        store.addImage(image1, 2);
         OrderSystem order1 = new OrderSystem("Walter", 20, store);
         order1.addItem(image1, 2);
         assertTrue(order1.removeItem(image1, 1));
@@ -67,6 +69,7 @@ public class OrderSystemTests {
         }
         ImageInfo image1 = new ImageInfo(img, (float) 5.75);
         ImageRepository store = new ImageRepository();
+        store.addImage(image1, 5);
         OrderSystem order1 = new OrderSystem("Walter", 20, store);
         order1.addItem(image1, 2);
         assertFalse(order1.removeItem(image1, 3));
@@ -82,6 +85,7 @@ public class OrderSystemTests {
         }
         ImageInfo image1 = new ImageInfo(img, (float) 5.75);
         ImageRepository store = new ImageRepository();
+        store.addImage(image1, 5);
         OrderSystem order1 = new OrderSystem("Walter", 20, store);
         order1.addItem(image1, 2);
         assertTrue(order1.removeItem(image1));
@@ -97,6 +101,7 @@ public class OrderSystemTests {
         }
         ImageInfo image1 = new ImageInfo(img, (float) 5.75);
         ImageRepository store = new ImageRepository();
+        store.addImage(image1, 5);
         OrderSystem order1 = new OrderSystem("Walter", 20, store);
         assertFalse(order1.removeItem(image1));
     }
@@ -111,6 +116,7 @@ public class OrderSystemTests {
         }
         ImageInfo image1 = new ImageInfo(img, (float) 5.75);
         ImageRepository store = new ImageRepository();
+        store.addImage(image1, 5);
         OrderSystem order1 = new OrderSystem("Walter", 20, store);
         order1.addItem(image1, 2);
         assertEquals(12.075, order1.checkout((float) 0.05), 0.01);
@@ -126,6 +132,7 @@ public class OrderSystemTests {
         }
         ImageInfo image1 = new ImageInfo(img, (float) 5.75);
         ImageRepository store = new ImageRepository();
+        store.addImage(image1, 5);
         OrderSystem order1 = new OrderSystem("Walter", 20, store);
         order1.addItem(image1, 2);
         assertEquals(11.47125, order1.checkout((float) 0.05, (float) 0.05), 0.01);
