@@ -168,7 +168,7 @@ public class OrderSystemTests {
     }
 
     @Test
-    public void CheckoutTest() {
+    public void CheckoutTest() throws Exception {
         BufferedImage img = null;
         try {
             img = ImageIO.read(new File("./src/Images/badminton.jpg"));
@@ -181,6 +181,22 @@ public class OrderSystemTests {
         OrderSystem order1 = new OrderSystem("Walter", 20, store);
         order1.addItem(image1, 2);
         assertEquals(12.075, order1.checkout((float) 0.05), 0.01);
+    }
+
+    @Test (expected = Exception.class)
+    public void CheckoutTest2() throws Exception {
+        BufferedImage img = null;
+        try {
+            img = ImageIO.read(new File("./src/Images/badminton.jpg"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        ImageInfo image1 = new ImageInfo(img, (float) 5.75);
+        ImageRepository store = new ImageRepository();
+        store.addImage(image1, 5);
+        OrderSystem order1 = new OrderSystem("Walter", 20, store);
+        order1.addItem(image1, 2);
+        order1.checkout((float) -0.05);
     }
 
     @Test

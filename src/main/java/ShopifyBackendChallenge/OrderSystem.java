@@ -111,7 +111,7 @@ public class OrderSystem {
      * Calculates the total order price after tax, when there is no discount
      * @return the total order price
      */
-    public float checkout(float taxRate) {
+    public float checkout(float taxRate) throws Exception {
         return calculateTax(orderCost, taxRate);
     }
 
@@ -148,7 +148,12 @@ public class OrderSystem {
      * @param taxRate the tax rate expressed as a decimal ie 5% tax is represented by 0.05
      * @return the total order amount, after tax
      */
-    private float calculateTax(float currTotal, float taxRate) {
-        return (1 + taxRate) * currTotal;
+    private float calculateTax(float currTotal, float taxRate) throws Exception {
+        if (taxRate >= 0) {
+            return (1 + taxRate) * currTotal;
+        }
+        else {
+            throw new Exception("Tax rate cannot be negative!");
+        }
     }
 }
