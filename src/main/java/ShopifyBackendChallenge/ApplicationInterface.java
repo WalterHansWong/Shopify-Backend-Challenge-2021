@@ -1,8 +1,6 @@
 package ShopifyBackendChallenge;
 
-import ShopifyBackendChallenge.ImageInfo;
-import ShopifyBackendChallenge.ImageRepository;
-import ShopifyBackendChallenge.OrderSystem;
+import ShopifyBackendChallenge.*;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -12,6 +10,7 @@ import java.util.Scanner;
 
 public class ApplicationInterface {
     public static void main(String[] args) throws Exception {
+        //System.out.println("Working Directory = " + System.getProperty("user.dir"));
         Scanner sc = new Scanner(System.in);
         System.out.println("Please enter a, b, or c. Corresponding to badminton, swimming and books, respectively.");
         String item = sc.nextLine();
